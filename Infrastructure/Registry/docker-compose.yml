@@ -1,13 +1,19 @@
 version: '3.0'
  
 services:
-  my-registry:
+  ownregistry:
     image: registry:latest
     container_name: ownregistry
     volumes:
-      - registry:/var/lib/registry
+      # - registry:/var/lib/registry
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/lib/docker/registry:/var/lib/registry
+      - ~/.htpasswd:/htpasswd
     ports:
-      - "50000:5000"
+      - "443:5000"
     restart: unless-stopped
+    env_file:
+      - .env
+
 volumes:
   registry:
