@@ -7,10 +7,15 @@ PASSWD_PASSWORD=password
 
 yum install -y httpd-tools
 
+echo "Installing bare minimum soft"
+yum install -y firewalld httpd-tools \
+    && systemctl start firewalld \
+    && systemctl enable firewalld
+
 yum install -y epel-release \
     && yum install -y python-pip \
-    && pip install docker-compose
-yum upgrade python*
+    && pip install docker-compose requests urllib3 pyOpenSSL --force --upgrade
+yum upgrade -y python*
 
 docker run -it --rm --name certbot -p 80:80 \
     -v "/etc/letsencrypt:/etc/letsencrypt" \
@@ -21,7 +26,8 @@ docker run -it --rm --name certbot -p 80:80 \
 
 htpasswd -cBb ~/.htpasswd ${PASSWD_USER} ${PASSWD_PASSWORD}
 
-docker-compose up -d
+echo "Running docker registry image"
+cd ./Infrastructure/Registry/ && docker-compose up -d
 
 # Or manually using docker run
 # sudo docker run -d --name registry --restart=always \
