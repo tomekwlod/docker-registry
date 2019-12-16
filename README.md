@@ -15,7 +15,7 @@ It is a collection of docker images with the same name and different tags (simil
 - create a domain for the registry, eg. d1.domain.com and point it to your server
 - go to this server and:
 - `cd /opt/docker-registry/`
-- change secrets in `Infrastructure/Registry/.env` and `docker-compose.yml`
+- change secrets in `Infrastructure/Registry/.env` (or copy the .env.prod to .env) and `docker-compose.yml` if needed
 - `/bin/bash install.sh`
 
 <br />

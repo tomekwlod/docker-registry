@@ -1,9 +1,6 @@
 #!/bin/bash
 
-DOCKERREGISTRY=docker.domain.com
-EMAIL=email@here.com
-PASSWD_USER=user
-PASSWD_PASSWORD=password
+. ./Infrastructure/Registry/.env && echo ${DOCKERREGISTRY}
 
 yum install -y httpd-tools
 
@@ -22,7 +19,7 @@ docker run -it --rm --name certbot -p 80:80 \
     -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
     certbot/certbot certonly \
     --standalone -d ${DOCKERREGISTRY} --preferred-challenges http \
-    --agree-tos -n -m ${EMAIL}
+    --agree-tos -n -m ${CERTBOT_EMAIL}
 
 htpasswd -cBb ~/.htpasswd ${PASSWD_USER} ${PASSWD_PASSWORD}
 
