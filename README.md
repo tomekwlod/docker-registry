@@ -33,6 +33,10 @@ Check now if everything is working as expected by browsing:
 `https://docker.domain.com/v2/`
 or
 `https://docker.domain.com/v2/_catalog`
+or 
+`https://docker.phaseiilabs.com/v2/{your-repo-name-here}/tags/list`
+or
+`https://docker.phaseiilabs.com/v2/twlphaseii/node-jenkins-docker/manifests/latest` <-- to download and see the metadata for the tag
 
 <br />
 
