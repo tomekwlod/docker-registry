@@ -12,11 +12,18 @@ It is a collection of docker images with the same name and different tags (simil
 
 # Usage
 
-- create a domain for the registry, eg. d1.domain.com and point it to your server
+- create a domain for the registry, eg. `docker.domain.com` and point it to your server
 - go to this server and:
 - `cd /opt/docker-registry/`
 - change secrets in `Infrastructure/Registry/.env` (or copy the .env.prod to .env) and `docker-compose.yml` if needed
 - `/bin/bash install.sh`
+
+<br />
+
+Check now if everything is working as expected by browsing:
+`https://docker.domain.com/v2/`
+or
+`https://docker.domain.com/v2/_catalog`
 
 <br />
 

@@ -7,10 +7,12 @@ yum install -y httpd-tools
 echo "Installing bare minimum soft"
 yum install -y firewalld httpd-tools \
     && systemctl start firewalld \
-    && systemctl enable firewalld
+    && systemctl enable firewalld \
+    && service docker stop \
+    && service docker start
 
 yum install -y epel-release \
-    && yum install -y python-pip \
+    && yum install -y python-pip gcc \
     && pip install docker-compose requests urllib3 pyOpenSSL --force --upgrade
 yum upgrade -y python*
 
