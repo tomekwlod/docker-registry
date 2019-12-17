@@ -10,11 +10,20 @@ It is a collection of docker images with the same name and different tags (simil
 
 <br />
 
+# Requirements
+
+- docker
+- docker-compose
+- git
+
+<br />
+
 # Usage
 
 - create a domain for the registry, eg. `docker.domain.com` and point it to your server
 - go to this server and:
 - `cd /opt/docker-registry/`
+- `git clone https://github.com/tomekwlod/docker-registry.git .`
 - change secrets in `Infrastructure/Registry/.env` (or copy the .env.prod to .env) and `docker-compose.yml` if needed
 - `/bin/bash install.sh`
 
