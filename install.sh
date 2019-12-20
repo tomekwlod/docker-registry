@@ -10,6 +10,7 @@ yum install -y firewalld httpd-tools \
     && systemctl enable firewalld \
     && service docker stop \
     && service docker start
+    # restart docker after running firewall because docker might not see firewall without it
 
 yum install -y epel-release \
     && yum install -y python-pip gcc \
